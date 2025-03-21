@@ -437,5 +437,3 @@ yes_votes |>
 What do you notice? What do you wonder?
 
 > Insert your answer
-
-
