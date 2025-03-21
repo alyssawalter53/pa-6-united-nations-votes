@@ -158,8 +158,6 @@ unvotes |>
   coord_flip() #flip x and y
 ```
 
-> Describe what the graph above demonstrates above UN voting records for the G7 
-  
 > It explains the proportion of yes/no/abstain votes by each country in the G7.  
   
   
@@ -174,6 +172,7 @@ unvotes |>
 The second data set, `roll_calls` has more information on the type of vote, the importance, whether it was a resolution, and date of the vote.  What does eh following code do?
 
 ```{r}
+#| label: "find-distinct-short-variables"
 roll_calls |> 
   distinct(short)
 ```
@@ -185,6 +184,7 @@ roll_calls |>
 We can use the individual data for `roll_calls` to look at the number of votes per year over time.
 
 ```{r}
+#| label: "creates-vote-line-plot"
 roll_calls |> 
   mutate(year = lubridate::year(date)) |> #extracts the year from the date value and creates a new `year` column
   count(year) |> #counts how many votes there were per year assuming each line is an single voting instance
@@ -205,6 +205,7 @@ What information is missing from the above graphic that might be useful in under
 
 We could try and look at the short descriptions, `short`, for each vote with the following code. 
 ```{r}
+#| label: "exploring-short-variable"
 roll_calls |> 
   count(short)
 ```
@@ -240,7 +241,7 @@ dim(roll_calls)
 ```
 
 
-> Insert Answer Here
+> There are fewer rows and columns in the issues data than the roll_calls data, meaning there are votes in the issues data that are not covered in the roll_call data.  
 
 
 
@@ -248,27 +249,27 @@ Now let's try joining the `roll_calls` with the `issues` data.  Compare the foll
 
 ```{r}
 roll_calls |> 
-  left_join(issues, by = "rcid") #description of join
+  left_join(issues, by = "rcid") #joining by same rcid values and adding issues to the left by column
 ```
 
 ```{r}
 roll_calls |> 
-  right_join(issues, by = "rcid") #description of join
+  right_join(issues, by = "rcid") #joining the same rcid values and adding issues to the right by column
 ```
 
 ```{r}
 roll_calls |> 
-  full_join(issues, by = "rcid") #description of join
+  full_join(issues, by = "rcid") #joining roll_calls and issues by rcid by using all rcid values
 ```
 
 ```{r}
 roll_calls |> 
-  inner_join(issues, by = "rcid") #description of join
+  inner_join(issues, by = "rcid") #joining roll_calls and issues by rcid rows found in both datasets
 ```
 
 **If we are only interested in retaining the records associated with the `issues` labeled in our data, which join(s) should we use?**
 
-> Insert answer here
+> Right join would be the correct join to use for our data.  
 
 
 
