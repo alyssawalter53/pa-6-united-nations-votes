@@ -175,7 +175,7 @@ roll_calls |>
   distinct(short)
 ```
 
-> Description of code results
+> The code finds distinct values in the variable short.
 
 
 
@@ -196,7 +196,7 @@ roll_calls |>
 
 What information is missing from the above graphic that might be useful in understanding the issues the UN commonly votes on?
 
-> Insert Answer Here
+> Type of issue and proportion of responses (yes/no/abstain)
 
 
 
@@ -208,7 +208,7 @@ roll_calls |>
 
 Does the above information help us understand the voting issues of the UN over time? Explain.
 
-> Insert your answer here
+> The short coliumn is very descriptive, bit it is a lot of information, so it is hard ti grasp. If there was a way to more generally categorize it, we would better understand the voting issues of the UN over time.
 
 
 
