@@ -1,6 +1,6 @@
 ---
 title: "United Nations Voting Records"
-author: "The names of your group members go here!"
+author: "Tyler Busby & Alyssa Walter"
 format: 
   html: default
   gfm: default
@@ -97,8 +97,8 @@ unvotes <- read_csv("data/unvotes.csv")
 
 
 ```{r}
-#edit to read in roll_calls
-roll_calls <- read_csv("__________")
+#read in roll_calls
+roll_calls <- read_csv("data/roll_calls.csv")
 ```
 
 
@@ -112,7 +112,7 @@ roll_calls <- read_csv("__________")
 |issue      |integer   | Descriptive issue name |
 
 ```{r}
-#edit to read in issues
+issues <- read_csv("data/issues.csv")#read in issues
 
 ```
 
