@@ -76,6 +76,7 @@ Here is each data set and its description (you might want to look at the Tidy Tu
 
 
 ```{r}
+#| label: "load-in-unvotes-data"
 unvotes <- read_csv("data/unvotes.csv")
 ```
 
@@ -97,6 +98,7 @@ unvotes <- read_csv("data/unvotes.csv")
 
 
 ```{r}
+#| label: "load-in-roll-calls-data"
 #read in roll_calls
 roll_calls <- read_csv("data/roll_calls.csv")
 ```
@@ -112,8 +114,8 @@ roll_calls <- read_csv("data/roll_calls.csv")
 |issue      |integer   | Descriptive issue name |
 
 ```{r}
+#| label: "load-in-issues-data"
 issues <- read_csv("data/issues.csv")#read in issues
-
 ```
 
 
@@ -134,30 +136,31 @@ The first data set, `unvotes` contains data on the `rcid` which is the roll call
 Comment on the following code, what is happening in each line?  One way to approach seeing what each line does is to highlight the code from before the `pipe` of that line up to the data `unvotes` and use `CTRL + ENTER` to run just the highlighted lines.  
 
 ```{r}
+#| label: "create-visualization"
 unvotes |> 
-  count(country, vote) |> #comment
-  group_by(country) |> #comment
-  mutate(total = sum(n)) |> #comment 
-  mutate(prop_vote = n/total) |> #comment
+  count(country, vote) |> #counts number of votes by each country
+  group_by(country) |> #group by country
+  mutate(total = sum(n)) |> #create variable total by adding the number of votes 
+  mutate(prop_vote = n/total) |> #create variable proportion of votes
   filter(country %in% c("United States", "Canada", 
                         "Germany", "France",
                         "Italy", "Japan",
-                        "United Kingdom")) |> #comment
+                        "United Kingdom")) |> #selects only countries we want
   ggplot(aes(x = country, y = prop_vote, 
-             fill = vote)) + #comment
-  geom_col(position = position_stack()) + #comment
+             fill = vote)) + #create a ggplot with this data
+  geom_col(position = position_stack()) + #make it a stacked barplot
   labs(x = "Group of Seven Countries",
        y = "Proportion of Votes",
        title = "Voting Record of the G7",
-       fill = "Vote") + #comment
-  theme_minimal() +  #comment
-  scale_fill_viridis_d(end = 0.8) + #comment
-  coord_flip() #comment
+       fill = "Vote") + #add descriptive labels
+  theme_minimal() +  #set theme
+  scale_fill_viridis_d(end = 0.8) + #set viridis color pallatte
+  coord_flip() #flip x and y
 ```
 
 > Describe what the graph above demonstrates above UN voting records for the G7 
   
-  
+> It explains the proportion of yes/no/abstain votes by each country in the G7.  
   
   
 
